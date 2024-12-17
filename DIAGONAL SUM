@@ -1,0 +1,80 @@
+import java.util.*;
+public class Diagonal_sum{
+    ////////////////NOT OPTIMISED/////////////////
+    public static int Diag_sum_primary(int arr[][]){
+        int sum1=0;
+        for(int i=0;i<arr.length;i++){
+              sum1=sum1+arr[i][i];
+                }
+                  return sum1;   
+        }
+        public static int Diag_sum_secondary(int arr[][]){
+            int sum2=0;
+            for(int i=0;i<arr.length;i++)
+            { 
+                for(int j=0;j<arr.length;j++)
+                  {
+                if(i+j==arr.length-1){
+                    sum2=sum2+arr[i][j];
+                }
+                }
+            }
+            return sum2;
+        }
+
+     
+
+        ///////////////////FOR INPUT//////////////////
+             public static void inputArr(int arr[][]){
+             System.out.println("enter the values of the matrix:");
+             Scanner sc=new Scanner(System.in);
+       
+             for(int i=0;i<arr.length;i++){
+                 for(int j=0;j<arr.length;j++){
+                    arr[i][j]=sc.nextInt();
+                       }
+                }
+             }
+             ////////////////////TO DISPLAY ////////////////
+                    public static void display(int arr[][]){
+                    for(int i=0;i<arr.length;i++){
+                        for(int j=0;j<arr[0].length;j++){
+                            System.out.print(arr[i][j]+"  ");
+                        }
+                        System.out.println();
+                    }
+    
+                   }
+    //////////////////////OPTIMIZED APPROACH////////////////////
+    public static int opt_sum(int arr[][]){
+        int  sum=0;
+        for(int i=0;i<arr.length;i++){
+            sum=sum+arr[i][i];
+            if(i!=arr.length-i-1)
+             sum=sum+arr[i][arr.length-i-1];
+        }
+        return sum;
+    }
+    ////////////////////DRIVER CODE////////////////
+    public static void main(String args[]){
+        int n,m;
+        System.out.print("enter no of rows:");
+        Scanner sc=new Scanner(System.in);
+        n=sc.nextInt();
+        System.out.print("enter no of columns:");
+        //Scanner sc=new Scanner(System.in);
+        m=sc.nextInt();
+     int arr[][]=new int [n][m];
+     inputArr(arr);
+     display(arr);
+     //////////////////////////////NORMAL APPROCH FUNCTION CALL///////////////
+   // int sum1= Diag_sum_primary(arr);
+   // int sum2=Diag_sum_secondary(arr);
+   // int final_sum=sum1+sum2;
+   int final_sum= opt_sum(arr);//// OPTIMIZED FUNCTION////
+    System.out.print("the sum of diagonal element is:"+final_sum);
+     
+    
+     }
+}
+    
