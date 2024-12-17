@@ -2,8 +2,8 @@ import java.util.*;
 public class Search_sorted{
    public static int search(int arr[][],int n,int m,int key){
     int row=0;
-    int col=m-1;
-    while(row<n && col>=0){
+    int col=arr.length-1;
+    while(row<arr.length && col>=0){
        if(arr[row][col]==key){
        System.out.println("key is found at:("+row+","+col+")");
        return 0;
