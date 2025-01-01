@@ -1,0 +1,17 @@
+import java.util.*;
+public class oddoreven{
+    public static int odd_or_even(int n){
+        int bitMask=1;
+        if((n&bitMask)==0)
+         System.out.println("the given number is even");
+         else
+         System.out.println("the number is odd");
+    
+    return 0;
+    }
+    public static void main(String args[]){
+        int n=18;
+        odd_or_even(n);
+
+    }
+}
