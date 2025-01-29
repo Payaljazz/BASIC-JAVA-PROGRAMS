@@ -1,0 +1,26 @@
+import java.util.*;
+public class question1 {
+   public static int fact(int n){
+      if(n==0){
+         return 1;
+      }
+      else{
+         int f=n*fact(n-1);
+         return f;
+      }
+   }
+      public static void main(String args[]){
+         int n;
+         System.out.print("Enter the number to find the factorial");
+         Scanner sc=new Scanner(System.in);
+         n=sc.nextInt();
+         if(n<0){
+            System.out.print("The enterd number is less than 0 so factorial cannot be find");
+         }
+         else{
+         int factorial=fact(n);
+         System.out.print("The factorial of the number is:"+factorial);
+         }
+      }
+   
+}
