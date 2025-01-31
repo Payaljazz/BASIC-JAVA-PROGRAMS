@@ -1,0 +1,27 @@
+import java.util.*;
+ public class maxsubarray{
+ public static void maxsubarray(int arr[]){
+        int maxsum,currsum,i,j,k;
+        maxsum=Integer.MIN_VALUE;
+        for(i=0;i<arr.length;i++){
+            for(j=i;j<arr.length;j++)
+            {
+                currsum=0;
+                for(k=i;k<=j;k++){
+                    currsum+=arr[k];
+                }
+                    System.out.print(currsum);
+                    System.out.println();
+                    if(maxsum<currsum){
+                        maxsum=currsum;
+                    }
+                }
+            }
+            System.out.print("the max sum is"  +maxsum);
+ }
+ 
+    public static void main(String args[]){
+        int arr[]={1,-2,6,-1,3};
+        maxsubarray(arr);
+    }
+ }
