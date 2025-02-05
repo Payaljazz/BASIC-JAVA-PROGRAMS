@@ -1,0 +1,20 @@
+import java.util.*;
+public class power_of_optimized{
+    public static int power(int n,int pow){
+        if(pow==0){
+            return 1;
+        }
+        int half_power=power(n,pow/2);
+        int half_power_sq=half_power*half_power;
+        if(pow%2!=0)//odd power
+        {
+            half_power_sq=half_power_sq*n;
+        }
+        return half_power_sq;
+    }
+    public static void main(String srg[]){
+        int n=2;
+        int pow=10;
+        System.out.print(power(n,pow));
+    }
+}
