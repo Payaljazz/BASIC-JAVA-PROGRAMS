@@ -1,0 +1,14 @@
+import java.util.*;
+public class tiling_problem{
+    public static int tiling(int n){
+        if(n==0||n==1)
+           return 1;
+        int vertical_tiles=tiling(n-1);
+        int horizontal_tiles=tiling(n-2);
+        int total_tiles=vertical_tiles+horizontal_tiles;
+        return total_tiles;
+    }
+    public static void main(String args[]){
+        System.out.print(tiling(4));
+    }
+}
