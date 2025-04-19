@@ -1,0 +1,74 @@
+import java.util.*;
+public class sudoku_solver {
+    public  static boolean is_safe(int sudoko[][],int row,int col,int digit){
+        // to check the that digit dont't exist in the row
+        for(int i=0;i<=8;i++){
+            if(sudoko[i][col]==digit)
+             return false;
+        }
+        // to check that digit don't exist in the column
+        for(int i=0;i<=8;i++){
+            if(sudoko[row][i]==digit)
+               return false;
+        }
+        // to check that digit don't exist in the grid also
+        int Sr=(row/3)*3;
+        int Sc=(col/3)*3;
+        for(int i=Sr;i<Sr+3;i++){
+             for(int j=Sc;j<Sc+3;j++){
+                if(sudoko[i][j]==digit)
+                 return false;
+             }
+        }
+        return true;
+    }
+    public static boolean place_digit(int sudoko[][],int row,int col){
+          if(row==9){  //base case
+            return true;
+          }
+    //--------------recursion-----------
+    int nextRow=row;
+    int nextCol=col+1;
+    if(col+1==9){
+       nextRow=row+1;
+       nextCol=0;
+    }
+    if(sudoko[row][col]!=0){
+        return place_digit(sudoko,nextRow,nextCol);
+    }
+    for(int digit =1;digit<=9;digit++){   //using is_safe() to put digits in the sudoko
+        if(is_safe(sudoko,row,col,digit)){
+            sudoko[row][col]=digit;
+        if (place_digit(sudoko,nextRow,nextCol))
+          return true;
+        }
+        sudoko[row][col]=0;
+    }
+    return false;
+    }
+public static void print_sudoko(int sudoko[][]){  //for printing the final sudoko
+    for(int i=0;i<9;i++){
+        for(int j=0;j<9;j++){
+            System.out.print(sudoko[i][j]+" ");
+        }
+        System.out.println();
+    }
+}
+    public static void main(String args[]){
+        int sudoko[][]={{ 0,0,8,0,0,0,0,0,0},
+        {4,9,0,1,5,7,0,0,2},
+        {0,0,3,0,0,4,1,9,0},
+        {1,8,5,0,6,0,0,2,0},
+        {0,0,0,0,2,0,0,6,0},
+        {9,6,0,4,0,5,3,0,0},
+        {0,3,0,0,7,2,0,0,4},
+        {0,4,9,0,3,0,0,5,7},
+        {8,2,7,0,0,9,0,1,3}};
+        if(place_digit(sudoko,0,0)){
+          System.out.println("solution exits.....");
+          print_sudoko(sudoko);
+        }
+        else
+          System.out.print("solution dont exist");
+    }
+}
