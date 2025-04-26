@@ -1,0 +1,45 @@
+import java.util.*;
+public class container{
+    //--------------Brute Force Approach TIME COMPLEXITY:O(N^2)----------------
+ public static int  stored(ArrayList<Integer>height){
+      int max=0;
+      for(int i=0;i<height.size();i++){
+        for(int j=i+1;j<height.size();j++){
+             int ht=Math.min(height.get(i),height.get(j));
+             int width=j-i;
+             int curr_water=ht*width;
+            max=Math.max(curr_water,max);
+        }
+      }
+    return max;
+ }
+ // --------------2 POINTER APPROCH TIME COMPLEXITY-O(N)--------------
+ public static int water(ArrayList<Integer>height){
+    int max=0;
+    int i=0;
+    int j=height.size()-1;
+    
+    while(i<j){
+        int ht=Math.min(height.get(i),height.get(j));
+        int width=j-i;
+        int curr =ht*width;
+        max=Math.max(curr,max);
+        if(height.get(i)<height.get(j))
+           i++;
+        else
+           j--;
+           
+    }
+    return max;
+ }
+public static void main(String args[]){
+    ArrayList<Integer>height=new ArrayList<>();
+    Scanner sc=new Scanner(System.in);
+    System.out.println("enter the values in the arraylist");
+    for(int i=0;i<9;i++){
+        height.add(sc.nextInt());
+    }
+    System.out.println("the max water contained is:"+stored(height));
+    System.out.print("the max water contained using 2 pointer approach:"+water(height));
+}
+}
