@@ -1,0 +1,39 @@
+// work on sorted and rotated array
+import java.util.*;
+public class pair_sum2{
+    public static boolean sum(ArrayList<Integer>list,int target){
+        int n=list.size();
+        int bp=0;  // to find the pivot point or breaking point to set the pointers
+        for(int i=0;i<n;i++){
+            if(list.get(i)>list.get(i+1)){
+               bp=i;
+                break;
+            }
+        }
+        int i=bp+1;// smallest elemnt
+        int  j=bp; //largest element
+        while(i!=j){
+            //case 1
+            if(list.get(i)+list.get(j)==target)
+              return true;
+            //case 2
+            if(list.get(i)+list.get(j)<target)
+              i=(i+1)%n;
+            // case 3
+            else
+               j=(n+j-1)%n;
+        }
+        return false;
+    }
+     public static void main (String args[]){
+        ArrayList<Integer>list=new ArrayList<>();
+        int target=16;
+        list.add(11);
+         list.add(15);
+          list.add(6);
+           list.add(8);
+            list.add(9);
+            list.add(10);
+            System.out.println(sum(list,target));
+}
+}
