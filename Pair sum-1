@@ -1,0 +1,28 @@
+//USING TWO POINTER APPROACH
+import java.util.*;
+public class pair_sum1{
+    public static boolean sum(ArrayList<Integer>list,int target){
+        //if given array is not sorted use Collection.sort(list)
+        int i=0;
+        int j=list.size()-1;
+        while(i<j){
+            if(list.get(i)+list.get(j)==target)
+              return true;
+            if(list.get(i)+list.get(j)<target)
+               i++;
+            else 
+            j--;
+        }
+        return false;
+    }
+    public static void main (String args[]){
+        ArrayList<Integer>list=new ArrayList<>();
+        int target=9;
+        list.add(1);
+         list.add(2);
+          list.add(3);
+           list.add(4);
+            list.add(5);
+            System.out.println(sum(list,target));
+    }
+}
